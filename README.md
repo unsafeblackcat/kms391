@@ -1,7 +1,7 @@
 # kms391
 Korea MapleStory v391 服务端代码
 
-# ~~暂停!~~ 放弃!! 祝大家玩的开心!!
+# ~~暂停!~~ 放弃!! 祝大家玩的开心!!!
 
 ## 03.30
 彻底放弃了。尝试把服务端的 server\wz\Quest.wz 反推回 Korea.MapleStory.v391\Data\Quest后客户端会启动失败。

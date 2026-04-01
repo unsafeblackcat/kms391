@@ -62,10 +62,8 @@ Korea MapleStory v391 服务端代码
 
 ## server
 原始来源: https://forum.ragezone.com/threads/kms-v391-source-client.1232393/         
-git: 840413b68d446de304695437c41ea1db9b134026
-     
+
 覆盖来源: https://forum.ragezone.com/threads/maplestory-kms-391-6th-job-skills-new-map-tao-yuan-new-classes-lien-kali-shanghua-yin-yue-class-updates-one-key-launcher-no-virtual-m.1262437/       
-git: b8976ee89a668c1178462f97034b779d915af2b1
 
 ## MapleStoryEx.dll
 https://github.com/InWILL/Locale_Remulator

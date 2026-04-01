@@ -1,0 +1,11 @@
+var status = -1;
+
+function start(mode, type, selection) {
+	qm.sendNext("엘나스 관저에 있는 타일러스에게 가보시겠어요?");
+	qm.dispose();
+}
+
+function end(mode, type, selection) {
+	qm.sendNext("엘나스 관저에 있는 타일러스에게 가보시겠어요?");
+	qm.dispose();
+}

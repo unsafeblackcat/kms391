@@ -1,0 +1,160 @@
+﻿/*
+제작자 : qudtlstorl79@nate.com
+*/
+
+importPackage(java.lang);
+importPackage(Packages.constants);
+importPackage(Packages.handling.channel.handler);
+
+파랑 = "#fc0xFF0054FF#";
+연파 = "#fc0xFF6B66FF#";
+연보 = "#fc0xFF8041D9#";
+보라 = "#fc0xFF5F00FF#";
+노랑 = "#fc0xFFEDD200#";
+검정 = "#fc0xFF191919#";
+화이트 = "#fc0xFFFFFFFF#";
+틀 = "#fUI/Basic.img/actMark/30#";
+버리기 = "#fUI/CashShop.img/CashItem_label/1#";
+길드 = "#fUI/CashShop.img/CashItem_label/2#";
+펫 = "#fUI/CashShop.img/CashItem_label/3#";
+위장색 = "#fUI/CashShop.img/CashItem_label/4#";
+창고 = "#fUI/CashShop.img/CashItem_label/5";
+스킬학습 = "#fUI/GuildMark.img/Mark/Animal/00002000";
+원클릭큐브 = "#fUI/CashShop.img/CashItem_label/7";
+원클릭환불 = "#fUI/CashShop.img/CashItem_label/8";
+원클릭강불 = "#fUI/CashShop.img/CashItem_label/2";
+뽑기 = "#fUI/CashShop.img/CashItem_label/2";
+택배 = "#fUI/CashShop.img/CashItem_label/2";
+스틸스킬 = "#fUI/CashShop.img/CashItem_label/2";
+편의 = "#fUI/CashShop.img/CashItem_label/2";
+추천인 = "#fUI/CashShop.img/CashItem_label/2";
+상점 = "#fUI/CashShop.img/CashItem_label/2";
+검은마법사 = "#fUI/CashShop.img/CashItem_label/2";
+위장색 = "#fUI/CashShop.img/CashItem_label/2";
+정령 = "#fUI/CashShop.img/CashItem_label/2";
+var status = -1;
+var talkType = 0x86;
+
+function start() {
+    action(1, 0, 0);
+}
+
+/*
+            cm.dispose();
+            InterServerHandler.EnterCS(cm.getPlayer().getClient(),cm.getPlayer(), false); 캐시샵
+*/
+
+function action(mode, type, selection) {
+    if (mode == -1 || mode == 0) {
+        cm.dispose();
+        return;
+    }
+    if (mode == 1) {
+        status++;
+    }
+    if (status == 0) {
+        var choose = "                    " + 틀 + "#l\r\n";
+        choose += "#fs20##L7#快速魔方#l";
+        choose += "     #L9#快速星火#l";
+        choose += "     #L5#現金强化[寶石]#l\r\n\r\n";
+        choose += "#L6#裝備附加#l";
+        choose += "     #L3#屬性提升#l";
+        choose += "     #L2#裝備强化[金幣]#l\r\n\r\n";
+        choose += "#L8#30星强化#l";
+        choose += "     #L4#50星强化#l\r\n";
+     //   choose += "#L1#附加魔方New#l";
+
+        
+    //choose += "#L22##fc0xFFF361A6#" + 어빌리티 + " 판타즈마 코인제작#k#l\r\n\r\n";
+        cm.sendSimpleS(choose, talkType);
+
+    } else if (status == 1) {
+        if (selection == 1) { // 아이템 버리기
+            cm.dispose();
+            cm.openNpc(9000347);
+        } else if (selection == 0) { // 각종 랭킹
+            cm.dispose();
+            cm.openNpc(1530330);
+        } else if (selection == 5) { // 창고
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(),  3004434, "CashEn");
+        } else if (selection == 3) { // 길드
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(),  3004434, "Shts");
+        } else if (selection == 4) { // 위장색
+            cm.dispose();
+         cm.openNpcCustom(cm.getClient(),  3004434, "WSXQH");
+        } else if (selection == 6) { // 펫 교환
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(),  3004434, "BallEn");
+        } else if (selection == 9) { // 강환불
+            cm.dispose();
+            cm.openNpc(3006189);
+        } else if (selection == 2) { //제네무기제작
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(),  3004434, "MesoEn");
+        } else if (selection == 7) { //V 코어 매트릭스
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(), 3006188, "MoFangQiangHua");
+        } else if (selection == 8) { //자유 전직
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(), 9062294, "talk_SugarMaple");
+        } else if (selection == 22) { //판타즈마
+            cm.dispose();
+            cm.openNpc(3003105);
+        } else if (selection == 23) { //제작시스템
+            cm.dispose();
+            cm.openNpc(2200004);
+        } else if (selection == 10) { //자유전직
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(), 1052206, "Stealskill");
+        } else if (selection == 11) { //검은마법사 재료 교환
+            cm.dispose();
+            cm.openNpc(1052224);
+        } else if (selection == 12) {
+            cm.dispose();
+            cm.openNpc(9010009);
+        } else if (selection == 13) {
+            cm.dispose();
+           cm.openNpcCustom(cm.getClient(), 9010044, "닉네임변경");
+        } else if (selection == 14) {
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(), 9062294, "원클큐브");
+        } else if (selection == 15) {
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(), 9062294, "원클환불");
+        } else if (selection == 16) {
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(), 9062294, "CashStroage");
+        } else if (selection == 17) {
+            cm.dispose();
+            cm.openNpc(9062543);
+        } else if (selection == 20) {
+            cm.dispose();
+            cm.openNpcCustom(cm.getClient(), 1052206, "LevelReward");
+         } else if (selection == 22) {
+            cm.dispose();
+         cm.openNpcCustom(cm.getClient(), 1052206, "ServerBackRE");
+        }  else if (selection == 18) {
+        cm.dispose();
+        cm.openNpcCustom(cm.getClient(), 1052206, "Stealskill");
+         } else if (selection == 900) {
+        cm.dispose();
+        cm.openNpc(3006188);
+        } else if (selection == 101) {
+            cm.dispose();
+            cm.openNpc(3006189);
+        } else if (selection == 102) {
+            cm.dispose();
+            cm.openNpc(9001228);
+        }
+    } else if (status == 2) {
+        if (selection == 0) {
+            cm.dispose();
+            cm.openNpc(2074149);
+        } else if (selection == 1) {
+            cm.dispose();
+            cm.openNpc(2074150);
+        }
+    }
+}

@@ -1,0 +1,10 @@
+importPackage(java.lang);
+importPackage(java.util);
+importPackage(Packages.tools.packet);
+
+var re;
+
+function act() {
+
+	rm.getPlayer().dropMessage(6, "À½");
+}

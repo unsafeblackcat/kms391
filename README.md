@@ -1,0 +1,102 @@
+# kms391
+Korea MapleStory v391 服务端代码
+
+# ~~暂停~~ 放弃!
+
+## 03.30
+彻底放弃了。尝试把服务端的 server\wz\Quest.wz 反推回 Korea.MapleStory.v391\Data\Quest后客户端会启动失败。
+
+对比下台服268的客户端任务目录MapleStory.v268\Data\Quest\_Canvas, 应该是缺失了这个文件夹以及里面的内容。导致部分数据不完整让客户端启动失败。
+
+本来想着用kms379的客户端中的Quest覆盖到kms391。结果379也是一个卵样发布出来的客户端也没有任务。甚至找网上一个韩国人开服的kms379私服，他们的客户端中也没有Quest。真是操蛋了不知道发布者为啥要把任务给删掉。。。。。
+
+这个端算是彻底放弃了。    
+![](img/tq.gif)
+
+## 03.29
+因为韩服客户端中没有Quest.wz, 所以玩家做不了任何任务。
+
+虽然根据群内大佬说可以通过Server端的xml转回Quest.wz
+
+我实在太懒了, 也没有人让我白嫖。
+
+经过考虑，准备投入到TMS268上去折腾。 TMS268是25年2月的端，对应的是KMS392版本。
+
+# 工程目录结构
+```
+kms391: 
+├─Detours  			子模块, 微软官方Detours Hook库
+├─DetoursLib  		编译好的Detours Hook x64 Lib
+├─MapleStoryEx  	MapleStoryEx.dll源码, 改动 github.Locale_Remulator.LRHook
+├─MapleStoryStart  	MapleStoryStart.exe源码
+├─server     		服务端源码
+├─Client.sln 		Client vs2026工程
+└─README.md
+```
+
+## 遗留问题
+1. 虽然可以使用聊天消息输入中文，但是接收方很大概率收到消息乱码
+2. 韩服客户端没有任务WZ文件，需要根据上面的“方法”去尝试去做转换。
+
+# 狗头保命
+本资源主要来源于网络收集, 仅个人学习和研究技术使用.     
+版权为nexon, 请勿用于商业用途.     
+如喜欢请去游戏官方体验正版游戏。    
+
+
+# 服务端部署
+1. 安装JDK21: https://www.oracle.com/java/technologies/downloads/#java21
+2. 安装mariadb-11.8.6: https://mariadb.org/download/?t=mariadb&o=true&p=mariadb&r=11.8.6&os=windows&cpu=x86_64&pkg=msi&mirror=yamagata-university
+3. 安装Navicat: https://www.navicat.com.cn/download/navicat-premium-lite
+4. Navicat连接mariadb的数据库
+5. 新建数据库名称 kms391, 字符集 utf8mb4 utf-8 unicode 
+6. kms391数据库, 运行sql文件, 选择: server/sql/kms391.sql 
+7. 打开server\Properties\world.properties
+8. 修改world.gateway.ip=当前机器IP
+9. 修改channel.net.interface=当前机器IP
+10. start.bat 启动服务端
+11. stop.bat  停止服务端
+
+# 客户端部署
+1. 解压Korea.MapleStory.v391客户端. 游戏客户端路径中不要带有中文!
+2. 将MapleStoryEx.dll, MapleStoryStart.exe和config.ini放置Korea.MapleStory.v391客户端根目录.
+3. 记事本打开Korea.MapleStory.v391\config.ini
+4. ip=127.0.0.1,修改为服务端IP, 如果是当前机器安装的服务端和数据库则跳过步骤.
+5. MapleStoryStart.exe启动游戏
+
+# 服务端构建和打包命令
+1. 文件 -> 项目结构 -> 项目 -> SDK: 21
+2. idea打开工程 -> 重新加载所有Maven项目 -> 同步所有Maven项目
+3. 执行Mave目标: ：mvn clean package dependency:copy-dependencies -DincludeScope=runtime
+4. release.pack.bat 打包服务端发布需要的所有文件
+
+# 客户端插件构建 
+安装vs2026   
+Detours工程默认直接依赖编译好的 DetoursLib 使用vs2026构建出x64静态库
+
+## 构建 Detours
+1. 更新子模块 Detours
+2. cmd "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools\VsDevCmd.bat" -arch=x64 -host_arch=x64
+3. cd /d kms391\Detours
+4. set DETOURS_TARGET_PROCESSOR=X64   
+5. set DETOURS_CONFIG=Release  
+6. nmake /nologo clean  
+7. nmake /nologo     
+8. bin.X64Release, lib.X64Release, include
+
+## 构建MapleStoryEx.dll和MapleStoryStart.exe
+Client.sln, 编译x64 Release即可。
+
+# 来源 
+
+## server
+原始来源: https://forum.ragezone.com/threads/kms-v391-source-client.1232393/         
+git: 840413b68d446de304695437c41ea1db9b134026
+     
+覆盖来源: https://forum.ragezone.com/threads/maplestory-kms-391-6th-job-skills-new-map-tao-yuan-new-classes-lien-kali-shanghua-yin-yue-class-updates-one-key-launcher-no-virtual-m.1262437/       
+git: b8976ee89a668c1178462f97034b779d915af2b1
+
+## MapleStoryEx.dll
+https://github.com/InWILL/Locale_Remulator
+
+# 最后祝大家玩的开心!

@@ -1,7 +1,7 @@
 # kms391
 Korea MapleStory v391 服务端代码
 
-# ~~暂停~~ 放弃!
+# ~~暂停!~~ 放弃!! 祝大家玩的开心!!
 
 ## 03.30
 彻底放弃了。尝试把服务端的 server\wz\Quest.wz 反推回 Korea.MapleStory.v391\Data\Quest后客户端会启动失败。
@@ -21,18 +21,6 @@ Korea MapleStory v391 服务端代码
 我实在太懒了, 也没有人让我白嫖。
 
 经过考虑，准备投入到TMS268上去折腾。 TMS268是25年2月的端，对应的是KMS392版本。
-
-# 工程目录结构
-```
-kms391: 
-├─Detours  			子模块, 微软官方Detours Hook库
-├─DetoursLib  		编译好的Detours Hook x64 Lib
-├─MapleStoryEx  	MapleStoryEx.dll源码, 改动 github.Locale_Remulator.LRHook
-├─MapleStoryStart  	MapleStoryStart.exe源码
-├─server     		服务端源码
-├─Client.sln 		Client vs2026工程
-└─README.md
-```
 
 ## 遗留问题
 1. 虽然可以使用聊天消息输入中文，但是接收方很大概率收到消息乱码
@@ -70,23 +58,6 @@ kms391:
 3. 执行Mave目标: ：mvn clean package dependency:copy-dependencies -DincludeScope=runtime
 4. release.pack.bat 打包服务端发布需要的所有文件
 
-# 客户端插件构建 
-安装vs2026   
-Detours工程默认直接依赖编译好的 DetoursLib 使用vs2026构建出x64静态库
-
-## 构建 Detours
-1. 更新子模块 Detours
-2. cmd "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools\VsDevCmd.bat" -arch=x64 -host_arch=x64
-3. cd /d kms391\Detours
-4. set DETOURS_TARGET_PROCESSOR=X64   
-5. set DETOURS_CONFIG=Release  
-6. nmake /nologo clean  
-7. nmake /nologo     
-8. bin.X64Release, lib.X64Release, include
-
-## 构建MapleStoryEx.dll和MapleStoryStart.exe
-Client.sln, 编译x64 Release即可。
-
 # 来源 
 
 ## server
@@ -98,5 +69,3 @@ git: b8976ee89a668c1178462f97034b779d915af2b1
 
 ## MapleStoryEx.dll
 https://github.com/InWILL/Locale_Remulator
-
-# 最后祝大家玩的开心!

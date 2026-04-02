@@ -2,6 +2,9 @@
 Korea MapleStory v391 服务端代码
 
 # ~~暂停!~~ 放弃!! 祝大家玩的开心!!!
+通过网盘分享的文件：kms391   
+链接: https://pan.baidu.com/s/1cjp1JTTJlEaX93iEg5bhaA?pwd=dnkm 提取码: dnkm    
+--来自百度网盘超级会员v7的分享   
 
 ## 03.30
 彻底放弃了。尝试把服务端的 server\wz\Quest.wz 反推回 Korea.MapleStory.v391\Data\Quest后客户端会启动失败。
